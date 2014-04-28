@@ -19,6 +19,12 @@ public interface AbstractCoinProductsFactory {
 	@NotNull
 	public Coin mintCoin(@NotNull String amount) throws CoinDenominationNotSupportedException;
 	
+	/**
+	 * This method will create a coin jar with the given volume and desired units.
+	 * @param volume - the desired volume for the coin jar.
+	 * @param units - the desired units for the coin jar.
+	 * @return
+	 */
 	@NotNull
 	public CoinJar makeCoinJar(@NotNull String volume,@NotNull String units);
 }

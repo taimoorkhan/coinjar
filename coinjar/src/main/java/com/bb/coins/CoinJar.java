@@ -40,5 +40,6 @@ public interface CoinJar {
 	 * This method returns the total monetary amount of the coins added to this coin jar.
 	 * @return {@link MonetaryAmount} object representing the monetary amount of this coin jar.
 	 */
+	@NotNull
 	public MonetaryAmount getMonetaryAmount();
 }

@@ -2,15 +2,35 @@ package com.bb.coins.impl.us;
 
 import java.math.BigDecimal;
 
+import javax.annotation.concurrent.Immutable;
+import javax.annotation.concurrent.ThreadSafe;
+import javax.validation.constraints.NotNull;
+
 import com.bb.coins.impl.AbstractVolumeConverter;
 import com.bb.utils.measurements.Volume;
 import com.bb.utils.measurements.VolumeUnits;
 
+/**
+ * Class for converting between different us volumes.
+ * Currently only two volumes are supported : FLuid ounces and Micro Fluid ounces.
+ * This class is immutable and thread safe.
+ */
+@ThreadSafe
+@Immutable
 public class UsVolumeConverter extends AbstractVolumeConverter{
 
+	/**
+	 * Singleton multiplication factor representing a mega/micro value.
+	 */
 	static BigDecimal MICRO_MULTIPLIER = new BigDecimal("1000000");
+	
+	/**
+	 * This method converts a us volume to the requested units.  The returned volume is 
+	 * another immutable us volume.
+	 */
 	@Override
-	public Volume convert(Volume from, VolumeUnits toUnits) {
+	@NotNull
+	public Volume convert(@NotNull Volume from, @NotNull VolumeUnits toUnits) {
 		if(! (from instanceof UsVolume) || (!(toUnits instanceof UsVolumeUnits))){
 			throw new IllegalArgumentException("Was expecting us units");
 		}

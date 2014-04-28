@@ -3,26 +3,42 @@ package com.bb.utils.measurements;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import javax.annotation.concurrent.Immutable;
+import javax.annotation.concurrent.ThreadSafe;
+import javax.validation.constraints.NotNull;
 
+/**
+ * Volume represents an entity which has a scalar number and volume units {@link VolumeUnits}.
+ * This class is immutable and is therefore thread  safe.
+ */
+@Immutable
+@ThreadSafe
 public abstract class Volume {
 	
 	private BigDecimal number;
 	private VolumeUnits units;
 	
-	public Volume( BigDecimal number, VolumeUnits units){
+	/**
+	 * @param number - this is the scalar value of the volume
+	 * @param units - these are the volume units (for e.g. US fluid ounces.
+	 */
+	public Volume( @NotNull BigDecimal number, @NotNull VolumeUnits units){
 		this.number = number;
 		this.units = units;
 	}
 	
+	@NotNull
 	public BigDecimal getValue(){
 		return number;
 	}
 	
+	@NotNull
 	public VolumeUnits getUnits(){
 		return units;
 	}
 	
-	public abstract Volume subtract(Volume other);
+	@NotNull
+	public abstract Volume subtract(@NotNull Volume other);
 	
 	@Override
 	public boolean equals(Object obj) {

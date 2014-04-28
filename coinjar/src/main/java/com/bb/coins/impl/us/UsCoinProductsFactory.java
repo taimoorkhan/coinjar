@@ -2,11 +2,21 @@ package com.bb.coins.impl.us;
 
 import java.math.BigDecimal;
 
+import javax.annotation.concurrent.Immutable;
+import javax.annotation.concurrent.ThreadSafe;
+import javax.validation.constraints.NotNull;
+
 import com.bb.coins.AbstractCoinProductsFactory;
 import com.bb.coins.Coin;
 import com.bb.coins.CoinJar;
 import com.bb.coins.exceptions.CoinDenominationNotSupportedException;
 
+/**
+ * This is the concrete implementation of the abstract factory of coin products.
+ * This class is immutable and thread safe.
+ */
+@ThreadSafe
+@Immutable
 public class UsCoinProductsFactory implements AbstractCoinProductsFactory{
 
 	private static final String ONE_CENT_STR = "1";
@@ -22,8 +32,12 @@ public class UsCoinProductsFactory implements AbstractCoinProductsFactory{
 	private static final UsCoin TWENTY_FIVE_CENTS = new UsCoin(UsMonetaryAmounts.TWENTY_FIVE, UsVolumes.TWENTY_FIVE_CENTS_MICRO_FLUID_OUNCES);
 	private static final UsCoin HALF_DOLLAR = new UsCoin(UsMonetaryAmounts.HALF_DOLLAR, UsVolumes.TWENTY_FIVE_CENTS_MICRO_FLUID_OUNCES);
 	
-	
-	public Coin mintCoin(String denomination)  {
+	/**
+	 * @return - a coin of the requested denomination.  Since {@link Coin} are supposed to be immutable
+	 * we can use a flyweight objects.
+	 */
+	@NotNull
+	public Coin mintCoin(@NotNull String denomination)  {
 		if(denomination == null){
 			throw new IllegalArgumentException("Can not pass null denomination");
 		}
@@ -43,8 +57,12 @@ public class UsCoinProductsFactory implements AbstractCoinProductsFactory{
 		}
 	}
 
+	/**
+	 * @return - returns a coin jar of the requested volume with requested volume units.
+	 */
 	@Override
-	public CoinJar makeCoinJar(String v, String units) {
+	@NotNull
+	public CoinJar makeCoinJar(@NotNull String v,@NotNull String units) {
 		
 		BigDecimal scalarValue = new BigDecimal(v);
 		if(scalarValue.doubleValue() <= 0){

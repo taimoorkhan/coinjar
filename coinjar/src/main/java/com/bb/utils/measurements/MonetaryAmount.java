@@ -3,21 +3,36 @@ package com.bb.utils.measurements;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import javax.annotation.concurrent.Immutable;
+import javax.annotation.concurrent.ThreadSafe;
+import javax.validation.constraints.NotNull;
 
+/**
+ * An abstract class representing MonetaryAmounts.
+ * This class is immutable and therefore is thread safe.
+ */
+@ThreadSafe
+@Immutable
 public abstract class MonetaryAmount  {
 	
 	private BigDecimal number ;
 	private MonetaryUnits units;
-	
-	public MonetaryAmount(BigDecimal n , MonetaryUnits units){
+	/**
+	 * Constructor 
+	 * @param n - represents the scalar amount representing this monetary amount.
+	 * @param units - {@link MonetaryUnits} for this monetary amount.
+	 */
+	public MonetaryAmount(@NotNull BigDecimal n ,@NotNull MonetaryUnits units){
 		this.number = n;
 		this.units = units;
 	}
 	
+	@NotNull
 	public BigDecimal getValue(){
 		return number;
 	}
 	
+	@NotNull
 	public MonetaryUnits getUnits(){
 		return units;
 	}

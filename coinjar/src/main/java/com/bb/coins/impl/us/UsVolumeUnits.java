@@ -1,7 +1,16 @@
 package com.bb.coins.impl.us;
 
+import javax.annotation.concurrent.Immutable;
+import javax.annotation.concurrent.ThreadSafe;
+
 import com.bb.coins.impl.AbstractVolumeUnits;
 
+/**
+ * Abstract base class representing us volume units.
+ * This class is immutable and thread safe.
+ */
+@ThreadSafe
+@Immutable
 public abstract class UsVolumeUnits extends AbstractVolumeUnits {
 	
 	static final UsMicroFluidOuncesVolumeUnits MICRO_FLUID_OUNCES = new UsMicroFluidOuncesVolumeUnits();
@@ -10,6 +19,10 @@ public abstract class UsVolumeUnits extends AbstractVolumeUnits {
 	public static final String MICRO_FLUID_OUNCES_STR = MICRO_FLUID_OUNCES.asString();
 	public static final String FLUID_OUNCES_STR = FLUID_OUNCES.asString();
 	
+	/**
+	 * Constructor for creating u.s. volume units of the desired units.
+	 * @param units
+	 */
 	protected UsVolumeUnits(String units) {
 		super(units);
 	}
@@ -36,7 +49,12 @@ public abstract class UsVolumeUnits extends AbstractVolumeUnits {
 	}
 }
 
-
+/**
+ * Class representing micro fluid ounces volume units.
+ * This class is thread safe and immutable
+ */
+@ThreadSafe
+@Immutable
 class UsMicroFluidOuncesVolumeUnits extends UsVolumeUnits{
 	
 	public UsMicroFluidOuncesVolumeUnits() {
@@ -58,6 +76,12 @@ class UsMicroFluidOuncesVolumeUnits extends UsVolumeUnits{
 	
 }
 
+/**
+ * This class represents u.s. fluid ounces volume units.
+ * This class is thread safe and immutable.
+ */
+@ThreadSafe
+@Immutable
 class UsFluidOunceVolumeUnits extends UsVolumeUnits{
 	
 	public UsFluidOunceVolumeUnits() {

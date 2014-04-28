@@ -17,7 +17,7 @@ public class UsMonetaryAmounts {
 class UsMonetaryAmount extends MonetaryAmount{
 	
 	public UsMonetaryAmount(BigDecimal number ){
-		super(number , UsCentsMonetaryUnits.US_CENTS);
+		super(number , UsMonetaryUnits.US_CENTS);
 	}
 
 	@Override

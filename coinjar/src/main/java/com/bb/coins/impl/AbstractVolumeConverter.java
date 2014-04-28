@@ -12,5 +12,13 @@ public abstract class AbstractVolumeConverter implements VolumeConverter{
 	
 	@Override
 	public abstract Volume convert(Volume from, VolumeUnits toUnits) ;
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof AbstractVolumeConverter)){
+			return false;
+		}
+		return super.equals(obj);
+	}
 
 }

@@ -2,6 +2,7 @@ package com.bb.coins.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import com.bb.coins.Coin;
 import com.bb.coins.CoinJar;
@@ -61,6 +62,23 @@ public abstract class AbstractCoinJar implements CoinJar{
 	@Override
 	public MonetaryAmount getMonetaryAmount() {
 		return amount;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof AbstractCoinJar)){
+			return false;
+		}
+		
+		AbstractCoinJar other = (AbstractCoinJar) obj;
+		return Objects.equals(this.coins, other.coins) && Objects.equals(this.amount, other.amount)
+				&& Objects.equals(this.remainingVolume, other.remainingVolume) 
+				&& Objects.equals(this.size, other.size);
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.coins, this.amount, this.remainingVolume, this.size);
 	}
 
 }

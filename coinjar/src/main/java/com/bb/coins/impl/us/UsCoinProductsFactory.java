@@ -55,6 +55,18 @@ public class UsCoinProductsFactory implements AbstractCoinProductsFactory{
 		return jar;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof UsCoinProductsFactory)){
+			return false;
+		}
+		return super.equals(obj);
+	}
+	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
 }
 
 

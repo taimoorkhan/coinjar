@@ -14,6 +14,12 @@ public class UsCoinJar extends AbstractCoinJar{
 		return UsMonetaryAmounts.ZERO;
 	}
 
-	
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof UsCoinJar)){
+			return false;
+		}
+		return super.equals(obj);
+	}
 
 }

@@ -1,6 +1,7 @@
 package com.bb.utils.measurements;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 
 public abstract class MonetaryAmount  {
@@ -22,5 +23,20 @@ public abstract class MonetaryAmount  {
 	}
 	
 	public abstract MonetaryAmount add(MonetaryAmount other);
+	
+
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof MonetaryAmount)){
+			return false;
+		}
+		MonetaryAmount other = (MonetaryAmount)obj;
+		return Objects.equals(this.number,other.number) && Objects.equals(this.units, other.units);
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.number, this.units);
+	}
 	
 }

@@ -41,4 +41,16 @@ class UsVolume extends Volume{
 		return new UsVolume(difference, (UsVolumeUnits)getUnits());
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof UsVolume)){
+			return false;
+		}
+		return super.equals(obj);
+	}
+	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
 }

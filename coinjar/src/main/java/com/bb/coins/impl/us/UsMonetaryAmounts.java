@@ -33,4 +33,17 @@ class UsMonetaryAmount extends MonetaryAmount{
 		return this;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof UsMonetaryAmount)){
+			return false;
+		}
+		return super.equals(obj);
+	}
+	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
+	
 }

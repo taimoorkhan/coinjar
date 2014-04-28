@@ -21,6 +21,19 @@ public abstract class UsVolumeUnits extends AbstractVolumeUnits {
 		
 		return FLUID_OUNCES.asString().equals(units) ? FLUID_OUNCES : MICRO_FLUID_OUNCES;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof UsVolumeUnits)){
+			return false;
+		}
+		return super.equals(obj);
+	}
+	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
 }
 
 
@@ -29,12 +42,39 @@ class UsMicroFluidOuncesVolumeUnits extends UsVolumeUnits{
 	public UsMicroFluidOuncesVolumeUnits() {
 		super("us micro fluid ounces");
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(! (obj instanceof UsMicroFluidOuncesVolumeUnits)){
+			return false;
+		}
+		return super.equals(obj);
+	}
+	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
+	
 }
 
 class UsFluidOunceVolumeUnits extends UsVolumeUnits{
 	
 	public UsFluidOunceVolumeUnits() {
 		super("us fluid ounces");
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(! (obj instanceof UsFluidOunceVolumeUnits)){
+			return false;
+		}
+		return super.equals(obj);
+	}
+	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
 	}
 }
 

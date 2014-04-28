@@ -34,6 +34,17 @@ public class UsVolumeConverter extends AbstractVolumeConverter{
 	}
 	
 	
+	@Override
+	public boolean equals(Object obj) {
+		if(! (obj instanceof UsVolumeConverter)){
+			return false;
+		}
+		return super.equals(obj);
+	}
 	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
 
 }
